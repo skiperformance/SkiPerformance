@@ -54,6 +54,18 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microcharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microcharts.0.7.1\lib\MonoAndroid10\Microcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microcharts.0.7.1\lib\MonoAndroid10\Microcharts.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.1.59.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Android, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.1.59.1.1\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -120,14 +132,13 @@
     <Compile Include="Containers\DistanceContainer.cs" />
     <Compile Include="Containers\SpeedContainer.cs" />
     <Compile Include="Fragments\ChartFragment.cs" />
-    <Compile Include="Fragments\MapFragment.cs" />
-    <Compile Include="FlashCardDeck.cs" />
+    <Compile Include="Fragments\MapsFragment.cs" />
     <Compile Include="FlashCardDeckAdapter.cs" />
     <Compile Include="Fragments\DataFragment.cs" />
     <Compile Include="Helpers\DistanceHelper.cs" />
     <Compile Include="Helpers\SpeedConverter.cs" />
+    <Compile Include="LocationListener.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="MyLocationListener.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,11 +5,16 @@ namespace Ski
 {
     class FlashCardDeckAdapter : FragmentPagerAdapter
     {
-        public FlashCardDeck flashCardDeck;
-        public FlashCardDeckAdapter(FragmentManager fm, FlashCardDeck flashCards)
-            : base(fm)
+        //private Fragment currentFragment;
+        public DataFragment DataFragment { get; set; }
+        public MapsFragment MapFragment { get; set; }
+        public ChartFragment ChartFragment { get; set; }
+
+        public FlashCardDeckAdapter(FragmentManager fragmentManager) : base(fragmentManager)
         {
-            flashCardDeck = flashCards;
+            DataFragment = new DataFragment();
+            MapFragment = new MapsFragment();
+            ChartFragment = new ChartFragment();
         }
 
         public override int Count
@@ -22,13 +27,13 @@ namespace Ski
             switch (position)
             {
                 case 0:
-                    return new DataFragment();
+                    return DataFragment;
                 case 1:
-                    return new MapFragment();
+                    return MapFragment;
                 case 2:
-                    return new ChartFragment();
+                    return ChartFragment;
                 default:
-                    return new DataFragment();
+                    return DataFragment;
             }
           
         }

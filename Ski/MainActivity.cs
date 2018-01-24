@@ -2,56 +2,56 @@
 using Android.OS;
 using Android.Support.V4.View;
 using Android.Support.V4.App;
+using Ski.Containers;
 using Android.Locations;
-using Android.Content;
 
 namespace Ski
 {
     [Activity(Label = "Ski", MainLauncher = true)]
     public class MainActivity : FragmentActivity
     {
-        //private TextView _txtSpeed;
-        //private TextView _txtMaxSpeed;
-        //private TextView _txtAvgSpeed;
-        //private TextView _txtDistance;
-        public static MainActivity Instance { get; set; }
+    
+        LocationListener _locationlistener;
+
+        FlashCardDeckAdapter _adapter;
+
 
         protected override void OnCreate(Bundle bundle)
         {
+            //Create view
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
-            ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
-            FlashCardDeck flashCards = new FlashCardDeck();
 
-            FlashCardDeckAdapter adapter =     new FlashCardDeckAdapter(SupportFragmentManager, flashCards);
-            viewPager.Adapter = adapter;
+            //Init Location management
+            _locationlistener = new LocationListener();
+            _locationlistener.LocationChanged += OnLocationChanged;   
 
-            //Instance = this;
-            //_txtSpeed = FindViewById<TextView>(Resource.Id.txtSpeed);
-            //_txtMaxSpeed = FindViewById<TextView>(Resource.Id.txtMaxSpeed);
-            //_txtAvgSpeed = FindViewById<TextView>(Resource.Id.txtAvgSpeed);
-            //_txtDistance = FindViewById<TextView>(Resource.Id.txtDistance);
+            LocationManager locationManager = (LocationManager)GetSystemService("location");
+            Criteria locationCriteria = new Criteria();
+            locationCriteria.Accuracy = Accuracy.Fine;
 
+            string locationProvider = locationManager.GetBestProvider(locationCriteria, true);
+            locationManager.RequestLocationUpdates(locationProvider, 0, 0, _locationlistener);
 
-            LocationManager mlocManager = (LocationManager)GetSystemService(Context.LocationService);
-            //var locationListener = new MyLocationListener();
+            //Init Pager
+            var pager = FindViewById<ViewPager>(Resource.Id.viewpager);
 
-            //Criteria locationCriteria = new Criteria();
-
-            //locationCriteria.Accuracy = Accuracy.Fine;
-
-            //string locationProvider = mlocManager.GetBestProvider(locationCriteria, true);
-            //mlocManager.RequestLocationUpdates(locationProvider, 0, 0, locationListener);
-
-
+            _adapter = new FlashCardDeckAdapter(SupportFragmentManager);
+            pager.Adapter = _adapter;
         }
 
-        public void UpdateUI(string speed, string maxSpeed, string avgSpeed, string distance)
+        private void OnLocationChanged(object sender, System.EventArgs e)
         {
-            //_txtSpeed.Text = string.Format("{0} km/h", speed);
-            //_txtMaxSpeed.Text = string.Format("{0} km/h", maxSpeed);
-            //_txtAvgSpeed.Text = string.Format("{0} km/h", avgSpeed);
-            //_txtDistance.Text = string.Format("{0} meters", distance);
+            var location = sender as Location;
+            if (location != null)
+            {
+                if (location.Speed != 0)
+                {
+                    //Data
+                    var dataFragment = _adapter.DataFragment;
+                    dataFragment.Update(location);
+                }
+            }
         }
     }
 }

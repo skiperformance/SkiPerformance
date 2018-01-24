@@ -4,5 +4,6 @@
     <SelectedDevice>Samsung SM-A520F</SelectedDevice>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
     <DefaultDevice>Android_Accelerated_x86_Nougat</DefaultDevice>
+    <AndroidDesignerPreferredTheme>Theme.Material.Light</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>
