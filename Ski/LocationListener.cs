@@ -18,21 +18,7 @@ namespace Ski
             if (LocationChanged != null)
             {
                 LocationChanged(location, null);
-            }
-
-            //if (location.Speed != 0)
-            //{
-            //    //Current Speed
-            //    var speed = _speedContainer.GetSpeed(location);
-
-            //    //Distance
-            //    _distanceContainer.Initialize(location);
-
-            //    double distance;
-            //    distance = _distanceContainer.GetCurrentDistance(location);
-
-            //    //        _dataFragment.UpdateUI(speed.ToString("N2"), _speedContainer.MaxSpeed.ToString("N2"), _speedContainer.AverageSpeed.ToString("N2"), distance.ToString("N2"));
-            //}
+            }          
         }
 
         public void OnProviderDisabled(string provider)

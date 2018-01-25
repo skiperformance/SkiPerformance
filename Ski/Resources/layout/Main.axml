@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/viewpager"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v4.view.PagerTabStrip
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+<!-- Country -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Choose a country" />
+    <Spinner
+        android:id="@+id/countrySpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+<!-- Place -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Choose a place" />
+    <Spinner
+        android:id="@+id/placeSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+<!-- Arrival date -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Arrival date" />
+    <Button
+        android:text="Pick Arrival Date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:textColor="#000000" />
-</android.support.v4.view.ViewPager>
+        android:id="@+id/btnArrivalDate" />
+<!-- Departure Date -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Departure date" />
+    <Button
+        android:text="Pick Departure Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnDepartureDate" />
+<!-- Button -->
+    <Button
+        android:text="Next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSavePlace" />
+</LinearLayout>
