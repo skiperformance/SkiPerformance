@@ -29,7 +29,11 @@ namespace Ski.Data
         private DataEntryPoint()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "database.db3");
-            _db = new SQLiteConnection(dbPath);
+
+            if (_db == null)
+            {
+                _db = new SQLiteConnection(dbPath);
+            }
 
             _db.CreateTable<Stay>();
         }
@@ -38,10 +42,12 @@ namespace Ski.Data
 
         public void InsertStay(Stay newStay)
         {
-            _db.Insert(newStay);
+            _db.Insert(newStay);           
+        }
 
-            //test reading data
-            var table = _db.Table<Stay>();
+        public TableQuery<Stay> GetAllStays()
+        {
+            return _db.Table<Stay>();
         }
     }
 }

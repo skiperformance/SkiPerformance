@@ -3,20 +3,30 @@ using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using Ski.Data.Entities;
+using SQLite;
 
 namespace Ski.Adapters
 {
     public class StaysListAdapter : RecyclerView.Adapter
     {
 
-        Context context;
+        TableQuery<Stay> _stays;
 
-        public StaysListAdapter()
+
+        public StaysListAdapter(TableQuery<Stay> stays)
         {
-            //this.context = context;
+            _stays = stays;
         }
 
-        public override int ItemCount => throw new NotImplementedException();
+        public override int ItemCount
+        {
+            get
+            {
+                var count = _stays.Count();
+                return count;
+            }
+        }
 
         public override long GetItemId(int position)
         {
@@ -25,7 +35,10 @@ namespace Ski.Adapters
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-           
+            StaysListAdapterViewHolder vh = holder as StaysListAdapterViewHolder;
+
+            var item = _stays.ElementAt(position);
+            vh.City.Text = item.City;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -42,13 +55,12 @@ namespace Ski.Adapters
 
     public class StaysListAdapterViewHolder : RecyclerView.ViewHolder
     {
-       
-        public TextView Caption { get; private set; }
+        public TextView City { get; private set; }
 
         public StaysListAdapterViewHolder(View itemView) : base(itemView)
-        {          
-           
-            Caption = itemView.FindViewById<TextView>(Resource.Id.cityName);
+        {
+
+            City = itemView.FindViewById<TextView>(Resource.Id.cityName);
         }
     }
 }
