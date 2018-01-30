@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <include layout="@layout/toolbar_stays" />
-  
-  <android.support.v7.widget.RecyclerView
+    <Button
+        android:text="GO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/staysRecyclerView" />
+        android:id="@+id/btnGo" />
 </LinearLayout>

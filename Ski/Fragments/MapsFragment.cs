@@ -1,7 +1,7 @@
-﻿using Android.Gms.Maps;
+﻿using Android.App;
+using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.OS;
-using Android.Support.V4.App;
 using Android.Views;
 using System.Threading.Tasks;
 
@@ -19,30 +19,27 @@ namespace Ski.Fragments
             var view = inflater.Inflate(Resource.Layout.maplayout, container, false);
             //SupportMapFragment mapFrag = (SupportMapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
 
-            _mapFragment = (SupportMapFragment)FragmentManager.FindFragmentByTag("map");
-            if (_mapFragment == null)
-            {
+            //Uncomment
+            //_mapFragment = (SupportMapFragment)FragmentManager.FindFragmentByTag("map");
+            //if (_mapFragment == null)
+            //{
 
-                GoogleMapOptions mapOptions = new GoogleMapOptions()
-                      .InvokeMapType(GoogleMap.MapTypeNormal)
-                      .InvokeZoomControlsEnabled(true)
-                      .InvokeCompassEnabled(true);
+            //    GoogleMapOptions mapOptions = new GoogleMapOptions()
+            //          .InvokeMapType(GoogleMap.MapTypeNormal)
+            //          .InvokeZoomControlsEnabled(true)
+            //          .InvokeCompassEnabled(true);
 
-                FragmentTransaction fragTx = FragmentManager.BeginTransaction();
-                 _mapFragment = SupportMapFragment.NewInstance(mapOptions);
-                fragTx.Add(Resource.Id.map, _mapFragment, "map");
+            //    FragmentTransaction fragTx = FragmentManager.BeginTransaction();
+            //     _mapFragment = SupportMapFragment.NewInstance(mapOptions);
+            //    fragTx.Add(Resource.Id.map, _mapFragment, "map");
 
-                fragTx.CommitAllowingStateLoss();
-            }
-            _mapFragment.GetMapAsync(this);
+            //    fragTx.CommitAllowingStateLoss();
+            //}
+            //_mapFragment.GetMapAsync(this);
 
             return view;
         }
-
-        //public override void OnActivityCreated(Bundle savedInstanceState)
-        //{
-        //    base.OnActivityCreated(savedInstanceState);
-        //}
+       
 
         public void OnMapReady(GoogleMap googleMap)
         {

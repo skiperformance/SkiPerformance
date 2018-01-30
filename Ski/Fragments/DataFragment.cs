@@ -1,10 +1,9 @@
-﻿
-using Android.Locations;
+﻿using Android.App;
 using Android.OS;
-using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using Ski.Containers;
+using Ski.EntryPoints;
 
 namespace Ski.Fragments
 {
@@ -28,32 +27,34 @@ namespace Ski.Fragments
             _txtMaxSpeed = view.FindViewById<TextView>(Resource.Id.txtMaxSpeed);
             _txtAvgSpeed = view.FindViewById<TextView>(Resource.Id.txtAvgSpeed);
             _txtDistance = view.FindViewById<TextView>(Resource.Id.txtDistance);
-            
+
+            _txtAvgSpeed.Text = string.Format("{0} km/h", ComputeRunEntryPoint.Instance.GetAverageSpeed().ToString("N2"));
+            _txtMaxSpeed.Text = string.Format("{0} km/h", ComputeRunEntryPoint.Instance.GetMaxSpeed().ToString("N2"));
             return view;
 
         }
 
-        public void Update(Location location)
-        {
-            //Current Speed
-            var speed = _speedContainer.GetSpeed(location);
+        //public void Update(Location location)
+        //{
+        //    //Current Speed
+        //    var speed = _speedContainer.GetSpeed(location);
 
-            //Distance
-            _distanceContainer.Initialize(location);
-            double distance;
-            distance = _distanceContainer.GetCurrentDistance(location);
-
-
-            UpdateUI(speed.ToString("N2"), _speedContainer.MaxSpeed.ToString("N2"), _speedContainer.AverageSpeed.ToString("N2"), distance.ToString("N2"));
-        }
+        //    //Distance
+        //    _distanceContainer.Initialize(location);
+        //    double distance;
+        //    distance = _distanceContainer.GetCurrentDistance(location);
 
 
-        private void UpdateUI(string speed, string maxSpeed, string avgSpeed, string distance)
-        {
-            _txtSpeed.Text = string.Format("{0} km/h", speed);
-            _txtMaxSpeed.Text = string.Format("{0} km/h", maxSpeed);
-            _txtAvgSpeed.Text = string.Format("{0} km/h", avgSpeed);
-            _txtDistance.Text = string.Format("{0} meters", distance);
-        }      
+        //    UpdateUI(speed.ToString("N2"), _speedContainer.MaxSpeed.ToString("N2"), _speedContainer.AverageSpeed.ToString("N2"), distance.ToString("N2"));
+        //}
+
+
+        //private void UpdateUI(string speed, string maxSpeed, string avgSpeed, string distance)
+        //{
+        //    _txtSpeed.Text = string.Format("{0} km/h", speed);
+        //    _txtMaxSpeed.Text = string.Format("{0} km/h", maxSpeed);
+        //    _txtAvgSpeed.Text = string.Format("{0} km/h", avgSpeed);
+        //    _txtDistance.Text = string.Format("{0} meters", distance);
+        //}      
     }
 }

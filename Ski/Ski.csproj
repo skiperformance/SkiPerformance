@@ -60,6 +60,10 @@
     <Reference Include="Microcharts.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microcharts.0.7.1\lib\MonoAndroid10\Microcharts.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SkiaSharp, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\SkiaSharp.1.59.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
     </Reference>
@@ -85,6 +89,8 @@
       <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.android.1.1.5\lib\MonoAndroid\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
@@ -150,22 +156,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\Runs\LaunchRunActivity.cs" />
+    <Compile Include="Activities\Runs\RunningActivity.cs" />
+    <Compile Include="Adapters\RunsListAdapter.cs" />
     <Compile Include="Adapters\StaysListAdapter.cs" />
     <Compile Include="Containers\DistanceContainer.cs" />
     <Compile Include="Containers\SpeedContainer.cs" />
     <Compile Include="Controls\DatePickerFragment.cs" />
+    <Compile Include="EntryPoints\ComputeRunEntryPoint.cs" />
     <Compile Include="Fragments\ChartFragment.cs" />
     <Compile Include="Fragments\MapsFragment.cs" />
-    <Compile Include="FlashCardDeckAdapter.cs" />
+    <Compile Include="Adapters\ResultsTabAdapter.cs" />
     <Compile Include="Fragments\DataFragment.cs" />
     <Compile Include="Helpers\DistanceHelper.cs" />
     <Compile Include="Helpers\SpeedConverter.cs" />
     <Compile Include="LocationListener.cs" />
-    <Compile Include="MainActivity.cs" />
-    <Compile Include="RunResultsActivity.cs" />
+    <Compile Include="Activities\Stays\EditStayActivity.cs" />
+    <Compile Include="Activities\Runs\RunResultsActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaysListActivity.cs" />
+    <Compile Include="Activities\Runs\RunsListActivity.cs" />
+    <Compile Include="Activities\Stays\StaysListActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -193,7 +204,22 @@
     <AndroidResource Include="Resources\layout\staysCardView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\toolbar.axml">
+    <AndroidResource Include="Resources\layout\toolbar_stays.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\runs.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\runsCardView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\toolbar_runs.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\launchRun.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\running.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -203,9 +229,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Ski.Data\Ski.Data.csproj">
       <Project>{13a3b7d7-c7b1-4a6d-ac65-4b171ddf7425}</Project>
@@ -239,6 +263,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_stays_list.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\bottom_navigation_results.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\nav_item_colors.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

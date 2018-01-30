@@ -1,5 +1,4 @@
 ﻿using System;
-using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -8,22 +7,23 @@ using SQLite;
 
 namespace Ski.Adapters
 {
-    public class StaysListAdapter : RecyclerView.Adapter
+    public class RunsListAdapter : RecyclerView.Adapter
     {
         public event EventHandler<int> ItemClick;
-        TableQuery<Stay> _stays;
+        TableQuery<Run> _runs;
 
 
-        public StaysListAdapter(TableQuery<Stay> stays)
+        public RunsListAdapter(TableQuery<Run> runs)
         {
-            _stays = stays;
+            _runs = runs;
         }
 
         public override int ItemCount
         {
             get
             {
-                var count = _stays.Count();
+                //return 0;
+                var count = _runs.Count();
                 return count;
             }
         }
@@ -41,31 +41,31 @@ namespace Ski.Adapters
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            StaysListAdapterViewHolder vh = holder as StaysListAdapterViewHolder;
+           RunsListAdapterViewHolder vh = holder as RunsListAdapterViewHolder;
 
-            var item = _stays.ElementAt(position);
-            vh.City.Text = item.City;
+            var item = _runs.ElementAt(position);
+            vh.Caption.Text = item.Caption;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             // Inflate the CardView for the photo:
             View itemView = LayoutInflater.From(parent.Context).
-                        Inflate(Resource.Layout.staysCardView, parent, false);
+                        Inflate(Resource.Layout.runsCardView, parent, false);
 
             // Create a ViewHolder to hold view references inside the CardView:
-            StaysListAdapterViewHolder vh = new StaysListAdapterViewHolder(itemView, OnClick);
+            RunsListAdapterViewHolder vh = new RunsListAdapterViewHolder(itemView, OnClick);
             return vh;
         }
     }
 
-    public class StaysListAdapterViewHolder : RecyclerView.ViewHolder
+    public class RunsListAdapterViewHolder : RecyclerView.ViewHolder
     {
-        public TextView City { get; private set; }
+        public TextView Caption { get; private set; }
 
-        public StaysListAdapterViewHolder(View itemView, Action<int> listener) : base(itemView)
+        public RunsListAdapterViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
-            City = itemView.FindViewById<TextView>(Resource.Id.cityName);
+            Caption = itemView.FindViewById<TextView>(Resource.Id.caption);
             itemView.Click += (sender, e) => listener(base.LayoutPosition);
         }
     }

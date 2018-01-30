@@ -15,7 +15,11 @@ namespace Ski.Containers
         {
             get
             {
-                return _speeds.Average();
+                if (_speeds.Count>0)
+                {
+                    return _speeds.Average();
+                }
+                return 0;
             }
         }
 
@@ -35,6 +39,11 @@ namespace Ski.Containers
             }
 
             return _currentSpeed;
+        }
+
+        public List<double> GetSpeeds()
+        {
+            return _speeds;
         }
     }
 }

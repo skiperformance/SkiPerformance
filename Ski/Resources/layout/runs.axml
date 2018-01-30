@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <include layout="@layout/toolbar_stays" />
-  
+  <include layout="@layout/toolbar_runs" />
+
   <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/staysRecyclerView" />
+        android:id="@+id/runsRecyclerView" />
 </LinearLayout>

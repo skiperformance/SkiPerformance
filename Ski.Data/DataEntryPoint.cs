@@ -36,6 +36,7 @@ namespace Ski.Data
             }
 
             _db.CreateTable<Stay>();
+            _db.CreateTable<Run>();
         }
 
 
@@ -48,6 +49,17 @@ namespace Ski.Data
         public TableQuery<Stay> GetAllStays()
         {
             return _db.Table<Stay>();
+        }
+
+
+        public void InsertRun(Run newRun)
+        {
+            _db.Insert(newRun);
+        }
+
+        public TableQuery<Run> GetAllRuns()
+        {
+            return _db.Table<Run>();
         }
     }
 }
