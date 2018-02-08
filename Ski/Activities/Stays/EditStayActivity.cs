@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
+using Ski.Activities.Runs;
+using Ski.Constants;
 using Ski.Controls;
 using Ski.Data;
 using Ski.Data.Entities;
@@ -118,9 +121,12 @@ namespace Ski.Activities.Stays
                 Departure = _departure,
                 IsCurrent = true
             };
-            DataEntryPoint.Instance.InsertStay(stay);
+            var stayId = DataEntryPoint.Instance.InsertStay(stay);
 
-            StartActivity(typeof(StaysListActivity));
+            var intent = new Intent(this, typeof(RunsListActivity));
+            intent.PutExtra(IntentConstants.StayId, stayId);
+            intent.PutExtra(IntentConstants.StayLabel, stay.City);
+            StartActivity(intent);
         }
     }
 }

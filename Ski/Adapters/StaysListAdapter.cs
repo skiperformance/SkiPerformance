@@ -10,7 +10,9 @@ namespace Ski.Adapters
 {
     public class StaysListAdapter : RecyclerView.Adapter
     {
+
         public event EventHandler<int> ItemClick;
+        public event EventHandler<int> ItemLongClick;
         TableQuery<Stay> _stays;
 
 
@@ -34,6 +36,12 @@ namespace Ski.Adapters
                 ItemClick(this, position);
         }
 
+        public void OnLongClick(int position)
+        {
+            if (ItemLongClick != null)
+                ItemLongClick(this, position);
+        }
+
         public override long GetItemId(int position)
         {
             return position;
@@ -54,7 +62,7 @@ namespace Ski.Adapters
                         Inflate(Resource.Layout.staysCardView, parent, false);
 
             // Create a ViewHolder to hold view references inside the CardView:
-            StaysListAdapterViewHolder vh = new StaysListAdapterViewHolder(itemView, OnClick);
+            StaysListAdapterViewHolder vh = new StaysListAdapterViewHolder(itemView, OnClick, OnLongClick);
             return vh;
         }
     }
@@ -63,10 +71,11 @@ namespace Ski.Adapters
     {
         public TextView City { get; private set; }
 
-        public StaysListAdapterViewHolder(View itemView, Action<int> listener) : base(itemView)
+        public StaysListAdapterViewHolder(View itemView, Action<int> listener, Action<int> longClickListener) : base(itemView)
         {
             City = itemView.FindViewById<TextView>(Resource.Id.cityName);
             itemView.Click += (sender, e) => listener(base.LayoutPosition);
+            itemView.LongClick += (sender, e) => longClickListener(base.LayoutPosition);
         }
     }
 }

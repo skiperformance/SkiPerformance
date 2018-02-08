@@ -68,8 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataEntryPoint.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\Run.cs" />
     <Compile Include="Entities\Stay.cs" />
+    <Compile Include="Extensions\TableQueryExtensions.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

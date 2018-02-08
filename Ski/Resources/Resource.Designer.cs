@@ -2718,8 +2718,8 @@ namespace Ski
 			// aapt resource value: 0x7f0b00be
 			public const int chronometer = 2131427518;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int cityName = 2131427532;
+			// aapt resource value: 0x7f0b00ce
+			public const int cityName = 2131427534;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int clip_horizontal = 2131427415;
@@ -2777,6 +2777,9 @@ namespace Ski
 			
 			// aapt resource value: 0x7f0b002b
 			public const int disableHome = 2131427371;
+			
+			// aapt resource value: 0x7f0b00cb
+			public const int drawer_layout = 2131427531;
 			
 			// aapt resource value: 0x7f0b0087
 			public const int edit_query = 2131427463;
@@ -2883,26 +2886,29 @@ namespace Ski
 			// aapt resource value: 0x7f0b00b1
 			public const int map = 2131427505;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int masked = 2131427537;
+			// aapt resource value: 0x7f0b00d3
+			public const int masked = 2131427539;
 			
 			// aapt resource value: 0x7f0b00b8
 			public const int media_actions = 2131427512;
 			
+			// aapt resource value: 0x7f0b00db
+			public const int menu_add = 2131427547;
+			
 			// aapt resource value: 0x7f0b00d5
-			public const int menu_add = 2131427541;
+			public const int menu_audio = 2131427541;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int menu_audio = 2131427539;
-			
-			// aapt resource value: 0x7f0b00d2
-			public const int menu_home = 2131427538;
+			// aapt resource value: 0x7f0b00dc
+			public const int menu_delete = 2131427548;
 			
 			// aapt resource value: 0x7f0b00d4
-			public const int menu_video = 2131427540;
+			public const int menu_home = 2131427540;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int message = 2131427535;
+			// aapt resource value: 0x7f0b00d6
+			public const int menu_video = 2131427542;
+			
+			// aapt resource value: 0x7f0b00d1
+			public const int message = 2131427537;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int middle = 2131427387;
@@ -2912,6 +2918,21 @@ namespace Ski
 			
 			// aapt resource value: 0x7f0b0031
 			public const int multiply = 2131427377;
+			
+			// aapt resource value: 0x7f0b00da
+			public const int nav_FeedBack = 2131427546;
+			
+			// aapt resource value: 0x7f0b00d9
+			public const int nav_about = 2131427545;
+			
+			// aapt resource value: 0x7f0b00d7
+			public const int nav_home = 2131427543;
+			
+			// aapt resource value: 0x7f0b00d8
+			public const int nav_messages = 2131427544;
+			
+			// aapt resource value: 0x7f0b00cd
+			public const int nav_view = 2131427533;
 			
 			// aapt resource value: 0x7f0b00a5
 			public const int navigation_header_container = 2131427493;
@@ -3081,8 +3102,8 @@ namespace Ski
 			// aapt resource value: 0x7f0b00b7
 			public const int status_bar_latest_event_content = 2131427511;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int staysRecyclerView = 2131427531;
+			// aapt resource value: 0x7f0b00cc
+			public const int staysRecyclerView = 2131427532;
 			
 			// aapt resource value: 0x7f0b007f
 			public const int submenuarrow = 2131427455;
@@ -3135,11 +3156,11 @@ namespace Ski
 			// aapt resource value: 0x7f0b0078
 			public const int title_template = 2131427448;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int toolbar_runs = 2131427533;
+			// aapt resource value: 0x7f0b00cf
+			public const int toolbar_runs = 2131427535;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int toolbar_stays = 2131427534;
+			// aapt resource value: 0x7f0b00d0
+			public const int toolbar_stays = 2131427536;
 			
 			// aapt resource value: 0x7f0b0048
 			public const int top = 2131427400;
@@ -3189,8 +3210,8 @@ namespace Ski
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int visible = 2131427536;
+			// aapt resource value: 0x7f0b00d2
+			public const int visible = 2131427538;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int wide = 2131427365;
@@ -3499,7 +3520,10 @@ namespace Ski
 			public const int bottom_navigation_results = 2131623936;
 			
 			// aapt resource value: 0x7f0e0001
-			public const int menu_stays_list = 2131623937;
+			public const int left_menu = 2131623937;
+			
+			// aapt resource value: 0x7f0e0002
+			public const int menu_stays_list = 2131623938;
 			
 			static Menu()
 			{
@@ -3516,6 +3540,9 @@ namespace Ski
 			
 			// aapt resource value: 0x7f030000
 			public const int ic_add_white_48dp = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int ic_delete_white_48dp = 2130903041;
 			
 			static Mipmap()
 			{
@@ -3722,9 +3749,6 @@ namespace Ski
 		
 		public partial class Style
 		{
-			
-			// aapt resource value: 0x7f0c018f
-			public const int ActionBarTheme = 2131493263;
 			
 			// aapt resource value: 0x7f0c00a1
 			public const int AlertDialog_AppCompat = 2131493025;

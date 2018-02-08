@@ -1,12 +1,8 @@
-﻿using SQLite;
-using System.Collections.Generic;
-
-namespace Ski.Data.Entities
+﻿namespace Ski.Data.Entities
 {
-    public class Run
+    public class Run : EntityBase
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int StayId { get; set; }
 
         public string Caption { get; set; }
         public double MaxSpeed { get; set; }

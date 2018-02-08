@@ -5,5 +5,12 @@
        android:icon="@mipmap/ic_add_white_48dp"
        android:showAsAction="ifRoom"
        android:title="Add" />
+
+  <item
+       android:id="@+id/menu_delete"
+       android:visible="false"
+       android:icon="@mipmap/ic_delete_white_48dp"
+       android:showAsAction="ifRoom"
+       android:title="Delete" />
   
 </menu>

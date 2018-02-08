@@ -1,14 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using SQLite;
 
 namespace Ski.Data.Entities
 {
     [Table("Stay")]
-    public class Stay
+    public class Stay : EntityBase
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-
         public string Country { get; set; }
         public string City { get; set; }
         public DateTime Departure { get; set; }

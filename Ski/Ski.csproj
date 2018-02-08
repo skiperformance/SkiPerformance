@@ -160,6 +160,7 @@
     <Compile Include="Activities\Runs\RunningActivity.cs" />
     <Compile Include="Adapters\RunsListAdapter.cs" />
     <Compile Include="Adapters\StaysListAdapter.cs" />
+    <Compile Include="Constants\IntentConstants.cs" />
     <Compile Include="Containers\DistanceContainer.cs" />
     <Compile Include="Containers\SpeedContainer.cs" />
     <Compile Include="Controls\DatePickerFragment.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Fragments\DataFragment.cs" />
     <Compile Include="Helpers\DistanceHelper.cs" />
     <Compile Include="Helpers\SpeedConverter.cs" />
+    <Compile Include="Interfaces\ILongClickListener.cs" />
     <Compile Include="LocationListener.cs" />
     <Compile Include="Activities\Stays\EditStayActivity.cs" />
     <Compile Include="Activities\Runs\RunResultsActivity.cs" />
@@ -229,7 +231,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_delete_white_48dp.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ski.Data\Ski.Data.csproj">
       <Project>{13a3b7d7-c7b1-4a6d-ac65-4b171ddf7425}</Project>
@@ -269,6 +273,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\nav_item_colors.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_delete_white_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_delete_white_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_delete_white_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_delete_white_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\left_menu.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

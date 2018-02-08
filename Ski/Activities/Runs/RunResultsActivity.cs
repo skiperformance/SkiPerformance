@@ -8,7 +8,7 @@ using Android.Support.V7.App;
 
 namespace Ski.Activities.Runs
 {
-    [Activity(Label = "RunResultsActivity", MainLauncher = true)]
+    [Activity(Label = "RunResultsActivity", MainLauncher = false)]
     public class RunResultsActivity : Activity
     {
         BottomNavigationView bottomNavigation;

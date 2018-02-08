@@ -10,6 +10,7 @@ namespace Ski.EntryPoints
 {
     public class ComputeRunEntryPoint
     {
+        private int _stayId;
         private static volatile ComputeRunEntryPoint instance;
         private static object syncRoot = new Object();
         public static ComputeRunEntryPoint Instance
@@ -35,9 +36,10 @@ namespace Ski.EntryPoints
         private DistanceContainer _distanceContainer = new DistanceContainer();
         private SpeedContainer _speedContainer = new SpeedContainer();
 
-        public void Initialize(LocationManager locationManager)
+        public void Initialize(LocationManager locationManager, int stayId)
         {
             _locationManager = locationManager;
+            _stayId = stayId;
         }
 
         //public ComputeRunEntryPoint(LocationManager locationManager)
@@ -63,6 +65,7 @@ namespace Ski.EntryPoints
             //Save speeds
             var run = new Run
             {
+                StayId =_stayId,
                 Caption = "My Run",
                 AvgSpeed = _speedContainer.AverageSpeed,
                 MaxSpeed = _speedContainer.MaxSpeed,

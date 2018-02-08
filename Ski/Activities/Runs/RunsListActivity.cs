@@ -1,10 +1,11 @@
 ﻿
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Ski.Activities.Stays;
 using Ski.Adapters;
+using Ski.Constants;
 using Ski.Data;
 using static Android.Support.V7.Widget.RecyclerView;
 
@@ -13,7 +14,8 @@ namespace Ski.Activities.Runs
     [Activity(Label = "My Runs", MainLauncher = false)]
     public class RunsListActivity : Activity
     {
-       RunsListAdapter _adapter;
+        private int _stayId;
+        RunsListAdapter _adapter;
         RecyclerView _recyclerView;
         LayoutManager _layoutManager;
 
@@ -22,9 +24,15 @@ namespace Ski.Activities.Runs
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.runs);
 
+            _stayId = Intent.GetIntExtra(IntentConstants.StayId, -1);
             var toolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.toolbar_runs);
             SetActionBar(toolbar);
-            ActionBar.Title = "My Runs";
+
+            var cityName = Intent.GetStringExtra(IntentConstants.StayLabel);
+            ActionBar.Title = cityName;
+
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+            ActionBar.SetHomeButtonEnabled(true);
 
             _recyclerView = FindViewById<RecyclerView>(Resource.Id.runsRecyclerView);
 
@@ -32,7 +40,8 @@ namespace Ski.Activities.Runs
             _layoutManager = new LinearLayoutManager(this);
             _recyclerView.SetLayoutManager(_layoutManager);
 
-            var runs = DataEntryPoint.Instance.GetAllRuns();           
+            var stayId = Intent.GetIntExtra(IntentConstants.StayId, -1);
+            var runs = DataEntryPoint.Instance.GetRuns(_stayId);
 
             // Plug in my adapter:
             _adapter = new RunsListAdapter(runs);
@@ -48,7 +57,9 @@ namespace Ski.Activities.Runs
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            StartActivity(typeof(LaunchRunActivity));
+            var intent = new Intent(this, typeof(LaunchRunActivity));
+            intent.PutExtra(IntentConstants.StayId, _stayId);
+            StartActivity(intent);
 
             return true;
         }

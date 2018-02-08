@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace Ski.Data
 {
@@ -41,25 +42,42 @@ namespace Ski.Data
 
 
 
-        public void InsertStay(Stay newStay)
+        public int InsertStay(Stay newStay)
         {
-            _db.Insert(newStay);           
+            return _db.Insert(newStay);
         }
 
         public TableQuery<Stay> GetAllStays()
         {
-            return _db.Table<Stay>();
+            var stays = _db.Table<Stay>();
+            //var runs = _db.Table<Run>();
+            //foreach (var stay in stays)
+            //{
+            //    var currentRuns = runs.Where(r => r.StayId == stay.Id);
+            //    stay.Runs = currentRuns.ToList();
+            //}
+            return stays;
         }
-
 
         public void InsertRun(Run newRun)
         {
             _db.Insert(newRun);
         }
 
-        public TableQuery<Run> GetAllRuns()
+        public TableQuery<Run> GetRuns(int stayId)
         {
-            return _db.Table<Run>();
+            return _db.Table<Run>().Where(r => r.StayId == stayId);
+        }
+
+        public void DeleteStay(int stayId)
+        {
+            _db.Delete<Stay>(stayId);
+
+            var runsToDelete = GetRuns(stayId);
+            foreach (var item in runsToDelete)
+            {
+                _db.Delete<Run>(item.Id);
+            }
         }
     }
 }
